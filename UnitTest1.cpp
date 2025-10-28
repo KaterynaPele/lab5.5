@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../../lab5.5.cpp"
+#include "../lab5.5.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -10,12 +10,12 @@ namespace UnitTest1
     {
     public:
 
-        // Тест 1: базовий приклад
+        // Тест 1: базовий приклад (рахуємо перестановки)
         TEST_METHOD(TestBasicCountWays)
         {
-            maxDepth = 0; // обнуляємо перед тестом
+            maxDepth = 0;
             int result = countWays(5, 1, 2, 3);
-            Assert::AreEqual(5, result, L"Кількість способів для 5 з номіналами 1,2,3 неправильна");
+            Assert::AreEqual(13, result, L"Кількість способів для 5 з номіналами 1,2,3 неправильна");
             Assert::IsTrue(maxDepth > 0, L"Глибина рекурсії повинна бути > 0");
         }
 
@@ -37,7 +37,7 @@ namespace UnitTest1
             Assert::IsTrue(maxDepth > 0, L"Рекурсія все одно спрацювала");
         }
 
-        // Тест 4: перевірка глибини рекурсії для більшого m
+        // Тест 4: m = 4 (рахуємо перестановки)
         TEST_METHOD(TestMaxDepth)
         {
             maxDepth = 0;
