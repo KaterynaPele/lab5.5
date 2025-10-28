@@ -4,8 +4,11 @@ using namespace std;
 // Глобальна змінна для відстеження максимальної глибини рекурсії
 int maxDepth = 0;
 
+// Обгортка з 4 аргументів (щоб виклики countWays(m,x,y,z) працювали)
+int countWays(int m, int x, int y, int z);
+
 // Рекурсивна функція для підрахунку кількості способів
-int countWays(int m, int x, int y, int z, int depth = 1) {
+int countWays(int m, int x, int y, int z, int depth) { // убрано =1
     // Оновлюємо максимальну глибину, якщо потрібно
     if (depth > maxDepth)
         maxDepth = depth;
@@ -22,6 +25,12 @@ int countWays(int m, int x, int y, int z, int depth = 1) {
     return countWays(m - x, x, y, z, depth + 1)
         + countWays(m - y, x, y, z, depth + 1)
         + countWays(m - z, x, y, z, depth + 1);
+}
+
+// Реалізація обгортки: викликає основну функцію з depth = 1
+int countWays(int m, int x, int y, int z) {
+    maxDepth = 0;             // скидаємо глибину перед кожним викликом (зручно для тестів)
+    return countWays(m, x, y, z, 1);
 }
 
 int main() {
